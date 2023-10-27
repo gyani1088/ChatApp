@@ -23,11 +23,11 @@ public class Client{
             System.out.println("port="+client.getLocalPort());
             out = new PrintWriter(client.getOutputStream(),true);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
+            //Because write is a blocking call, thus creating a separate thread for reading the from the input
             InputHandler inputHandler = new InputHandler();
             Thread t = new Thread(inputHandler);
             t.start();
-
+            //reading the incoming messages in the main thread
             String inMessage;
             while((inMessage=in.readLine())!=null){
                 System.out.println(inMessage);
