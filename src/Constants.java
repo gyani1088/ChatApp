@@ -9,10 +9,7 @@ public class Constants {
 
     private Constants() throws IOException {
         properties = new Properties();
-//        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-//        InputStream stream = loader.getResourceAsStream("resources/application.properties");
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-//        System.out.println(rootPath);
         InputStream stream = new FileInputStream(rootPath+"application.properties");
         properties.load(stream);
     }
